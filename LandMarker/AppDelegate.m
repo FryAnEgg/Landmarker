@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <Parse/Parse.h>
+
 #import "Landmark.h"
 
 @interface AppDelegate ()
@@ -51,6 +53,23 @@
     
     [self setUpFileFolders];
     
+    [Parse enableLocalDatastore];
+    // Initialize Parse.
+    [Parse setApplicationId:@"0A5PJ1DerdD9bROEWG8MhaBDIPD4hehqaCnvm4G5"
+                  clientKey:@"VcaoJZlbLjGYi0u3kWczbuEpyQHEff8sUyW4Mlvb"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    // Register for Push Notitications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     return YES;
 }
 
@@ -78,6 +97,19 @@
     //[self saveContext];
 }
 
+#pragma mark - Remote Notifications
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
 -(void) setUpFileFolders {
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -103,7 +135,7 @@
 }
 
 
-#pragma mark - Core Data stack obs
+#pragma mark - Core Data stack obsoleted
 /*
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -472,11 +504,7 @@
 
 -(void) loadLandmarksNote :(NSNotification*)notif {
     
-    NSLog(@"loadLandmarksNote");
-    
     NSArray * lms = [ landmarksDocument fetchLandmarks ];
-    
-    NSLog(@"lms count = %lu", (unsigned long) lms.count);
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"LandmarksLoadedNote" object:lms];
     
@@ -511,9 +539,6 @@
         if (landmarksDocument != nil) {
             
         }
-        
-        //bLoadingDocument = NO;
-        
     }];
 }
 

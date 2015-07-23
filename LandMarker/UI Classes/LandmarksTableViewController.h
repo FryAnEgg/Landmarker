@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import <Parse/Parse.h>
+
 @interface LandmarksTableViewController : UITableViewController {
     
     NSArray * landmarks;
