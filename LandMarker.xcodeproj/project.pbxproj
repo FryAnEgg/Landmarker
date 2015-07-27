@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7709F4171B667B0700E49309 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7709F4161B667B0600E49309 /* ParseUI.framework */; };
+		7709F41F1B667D4A00E49309 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7709F41E1B667D4A00E49309 /* Accounts.framework */; };
+		7709F4211B667D6100E49309 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7709F4201B667D6100E49309 /* Social.framework */; };
 		77400C861B5FF4F500C11782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77400C841B5FF4F500C11782 /* Parse.framework */; };
 		77400C871B5FF4F500C11782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77400C841B5FF4F500C11782 /* Parse.framework */; };
 		77400C881B5FF4F500C11782 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77400C851B5FF4F500C11782 /* Bolts.framework */; };
@@ -51,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7709F4161B667B0600E49309 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		7709F41E1B667D4A00E49309 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		7709F4201B667D6100E49309 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		77400C841B5FF4F500C11782 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		77400C851B5FF4F500C11782 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		77400C8A1B5FF59D00C11782 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -95,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7709F4211B667D6100E49309 /* Social.framework in Frameworks */,
+				7709F41F1B667D4A00E49309 /* Accounts.framework in Frameworks */,
 				77400C941B5FF59D00C11782 /* AudioToolbox.framework in Frameworks */,
 				77400C951B5FF59D00C11782 /* CFNetwork.framework in Frameworks */,
 				77400C961B5FF59D00C11782 /* CoreGraphics.framework in Frameworks */,
@@ -107,6 +115,7 @@
 				77400C9D1B5FF59D00C11782 /* SystemConfiguration.framework in Frameworks */,
 				77400C861B5FF4F500C11782 /* Parse.framework in Frameworks */,
 				77400C881B5FF4F500C11782 /* Bolts.framework in Frameworks */,
+				7709F4171B667B0700E49309 /* ParseUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +134,9 @@
 		77400C9E1B5FF5AA00C11782 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7709F4201B667D6100E49309 /* Social.framework */,
+				7709F41E1B667D4A00E49309 /* Accounts.framework */,
+				7709F4161B667B0600E49309 /* ParseUI.framework */,
 				77400C8A1B5FF59D00C11782 /* AudioToolbox.framework */,
 				77400C8B1B5FF59D00C11782 /* CFNetwork.framework */,
 				77400C8C1B5FF59D00C11782 /* CoreGraphics.framework */,

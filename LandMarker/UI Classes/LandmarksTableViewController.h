@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
-@interface LandmarksTableViewController : UITableViewController {
+@interface LandmarksTableViewController : UITableViewController <PFLogInViewControllerDelegate> {
+    
+    PFUser * currentUser;
     
     NSArray * landmarks;
     
