@@ -325,8 +325,6 @@
     if (newHeading.headingAccuracy < 0)
         return;
     
-    // [ self addHeadingPoint:newHeading ];
-    
     // Use the true heading if it is valid.
     CLLocationDirection  theHeading = ((newHeading.trueHeading > 0) ? newHeading.trueHeading : newHeading.magneticHeading);
     
@@ -345,19 +343,6 @@
     
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) CLLocationDistance altitude
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) CLLocationCoordinate2D coordinate
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) CLLocationDirection course
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) CLLocationAccuracy horizontalAccuracy
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) CLLocationSpeed speed
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) NSDate *timestamp
-    //@property(readonly, NS_NONATOMIC_IPHONEONLY) CLLocationAccuracy verticalAccuracy
-    //- (NSString *)description
-    //- (CLLocationDistance)distanceFromLocation:(const CLLocation *)location
-    
-}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"CLLocationManager : didFailWithError");
