@@ -27,15 +27,25 @@
     
     [nc postNotificationName:@"Load_Landmarks_Note" object:nil userInfo:nil];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    // add TestObject
     //PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     //testObject[@"foo"] = @"bar";
     //[testObject saveInBackground];
+    
+    // add location_pc
+    //PFObject *gameScore = [PFObject objectWithClassName:@"location_pc"];
+    //gameScore[@"score"] = @1337;
+    //gameScore[@"playerName"] = @"Sean Plott";
+    //gameScore[@"cheatMode"] = @NO;
+    //[gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //    if (succeeded) {
+            // The object has been saved.
+    //    } else {
+            // There was a problem, check error.description
+    //    }
+    //}];
+    //
+    
     currentUser = [PFUser currentUser];
     
     if (!currentUser) { // No user logged in
@@ -57,6 +67,34 @@
         NSLog(@"user logged in %@",  currentUser.username);
        
     }
+
+    PFQuery *query = [PFQuery queryWithClassName:@"location_pclass"];
+    [query getObjectInBackgroundWithId:@"pitx4BS3x9" block:^(PFObject *locationobj, NSError *error) {
+        
+        if (error) {
+            NSLog(@"err#%d %@",error.code, error.description);
+        
+        }
+        
+        NSNumber * latnum = [locationobj objectForKey:@"latitude"];
+        NSNumber * longnum = [locationobj objectForKey:@"longitude"];
+        
+        NSLog(@"lat=%4.2f long=%4.2f",[latnum floatValue],[longnum floatValue]);
+        
+        PFGeoPoint * locPt = [locationobj objectForKey:@"gpoint"];
+        
+        NSLog(@"lat=%4.2lf long=%4.2lf",locPt.latitude,locPt.longitude);
+        
+        //example syntax
+        //NSString *playerName = locationobj[@"playerName"];
+        
+        NSString *objectId = locationobj.objectId;
+        NSDate *updatedAt = locationobj.updatedAt;
+        NSDate *createdAt = locationobj.createdAt;
+        
+        //[locationobj refresh];
+        
+    }];
 
 }
 

@@ -10,6 +10,8 @@
 
 #import "LM_TypeSelect_CollectionViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface LandmarkViewController ()
 
 @end
@@ -72,6 +74,10 @@
     gpsAccuracyLabel.text = [NSString stringWithFormat:@"h Acc = %4.6f - v Acc = %4.6f", horizontalAccuracyN.floatValue, verticalAccuracyN.floatValue];
     gpsAltitudeLabel.text = [NSString stringWithFormat:@"altitude = %4.6f", altitudeN.floatValue];
     gpsSpeedCourseLabel.text = [NSString stringWithFormat:@"speed = %4.6f - course = %4.6f", speedN.floatValue, courseN.floatValue];
+    
+    
+    //use PFGEO
+    PFGeoPoint * locPt = [PFGeoPoint geoPointWithLocation:lastLocation];
     
 }
 
